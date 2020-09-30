@@ -1,3 +1,5 @@
 tmp-commando
 node_modules
 data
+./configuration.js
+configuration.js
