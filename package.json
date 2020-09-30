@@ -1,0 +1,36 @@
+{
+  "name": "discordio",
+  "version": "1.0.0",
+  "description": "A modular, fully-featured discord bot made with Commando.",
+  "main": "esm-loader.js",
+  "scripts": {
+    "prod": "node .",
+    "dev": "nodemon .",
+    "postinstall": "patch-package"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dada513/discordio.git"
+  },
+  "keywords": [
+    "discordio"
+  ],
+  "author": "dada513",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/dada513/discordio/issues"
+  },
+  "homepage": "https://github.com/dada513/discordio#readme",
+  "dependencies": {
+    "discord.js": "^12.3.1",
+    "discord.js-commando": "git://github.com/discordjs/Commando.git#198d7604e3725ee88dceab9b5f296edb1b7580a5",
+    "esm": "^3.2.25",
+    "fs-extra": "^9.0.1",
+    "knex": "^0.21.6",
+    "patch-package": "^6.2.2",
+    "sqlite3": "^5.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
