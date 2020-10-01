@@ -1,1 +1,3 @@
-FROM node:12-alpine
+FROM debian
+
+RUN apk add git

@@ -8,7 +8,7 @@ console.log(ls.info, "Launching discordio");
 
 const client = new CommandoClient(config.bot);
 
-const groupFile = removeEmptyLine(fs.readFileSync("./cmdgroups.md", "utf8"));
+const groupFile = fs.readFileSync("./cmdgroups.md", "utf8");
 const groups = [];
 groupFile
   .split("\n")
@@ -35,7 +35,3 @@ client.once("ready", () => {
 
 client.on("error", console.error);
 client.login(config.token);
-
-function removeEmptyLine(text) {
-  return text.replace(/(\r\n|\n|\r)/gm, "");
-}

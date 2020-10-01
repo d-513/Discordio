@@ -1,4 +1,4 @@
-const { Command } = require("discord.js-commando");
+import { Command, CommandoMessage } from "discord.js-commando";
 
 module.exports = class IsOfflineCommand extends Command {
   constructor(client) {
@@ -10,6 +10,9 @@ module.exports = class IsOfflineCommand extends Command {
       userPermissions: ["ADMINISTRATOR"],
     });
   }
+  /**
+   * @param {CommandoMessage} message
+   */
   run(message) {
     return message.say("Working!");
   }
