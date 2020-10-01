@@ -1,5 +1,3 @@
 node_modules
-./configuration.js
 configuration.js
-data/**
-!data/
+data
