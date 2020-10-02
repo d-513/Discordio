@@ -8,15 +8,13 @@ console.log(ls.info, "Launching discordio");
 
 const client = new CommandoClient(config.bot);
 
-const groupFile = fs.readFileSync("./cmdgroups.md", "utf8");
-const groups = [];
-groupFile
-  .split("\n")
-  .forEach((line) => groups.push([line.split("|")[0], [line.split("|")[1]]]));
-
 client.registry
   .registerDefaultTypes()
-  .registerGroups(groups)
+  .registerGroups([
+    ["debug", "Debugging"],
+    ["mod", "Moderation"],
+    ["audio", "Audio"],
+  ])
   .registerDefaultGroups()
   .registerDefaultCommands()
   .registerCommandsIn(path.join(__dirname, "commands"));
