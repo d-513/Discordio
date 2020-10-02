@@ -4,7 +4,7 @@ export const token = env.DIO_TOKEN;
 
 // Additional bot configuration
 export const bot = {
-  commandPrefix: env.DIO_COMMAND_PREFIX,
+  commandPrefix: env.DIO_PREFIX,
   owner: env.DIO_OWNER,
   invite: env.DIO_SERVER,
   status: env.DIO_STATUS,
