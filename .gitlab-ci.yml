@@ -1,0 +1,6 @@
+image: node
+
+eslint:
+ script:
+    - npm ci
+    - npm run lint
