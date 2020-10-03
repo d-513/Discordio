@@ -18,6 +18,7 @@ else
     connection: {
       filename: "./data/discordio.db",
     },
+    useNullAsDefault: true,
   };
 
 export const web = {
