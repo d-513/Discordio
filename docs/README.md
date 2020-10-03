@@ -8,3 +8,5 @@ A fully-featured, open-source and selfhostable discord bot.
 Made with discord.js and Commando.
 
 Voice module uses lavalink
+
+https://discordio.netlify.app
