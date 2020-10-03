@@ -1,5 +1,4 @@
 import { Command, CommandoMessage } from "discord.js-commando";
-
 export default class KickCommand extends Command {
   constructor(client) {
     super(client, {
@@ -25,6 +24,7 @@ export default class KickCommand extends Command {
       userPermissions: ["KICK_MEMBERS"],
     });
   }
+
   /**
    * @param {CommandoMessage} message
    */

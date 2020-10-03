@@ -1,7 +1,6 @@
 import * as config from "../configuration";
 import { CommandoClient } from "discord.js-commando";
 import path from "path";
-import fs from "fs-extra";
 import ls from "log-symbols";
 import "../webui/server";
 console.log(ls.info, "Launching discordio");

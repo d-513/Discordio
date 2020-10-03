@@ -1,18 +1,19 @@
-import { Command, CommandoMessage } from "discord.js-commando";
+import { Command, CommandoMessage } from 'discord.js-commando'
 
 export default class SomethingCommand extends Command {
-  constructor(client) {
+  constructor (client) {
     super(client, {
-      name: "something",
-      group: "something",
-      memberName: "something",
-      description: "something",
-    });
+      name: 'something',
+      group: 'something',
+      memberName: 'something',
+      description: 'something'
+    })
   }
+
   /**
    * @param {CommandoMessage} message
    */
-  run(message) {
-    return message.say("something");
+  run (message) {
+    return message.say('something')
   }
 }

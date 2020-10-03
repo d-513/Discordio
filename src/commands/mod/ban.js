@@ -25,6 +25,7 @@ export default class BanCommand extends Command {
       userPermissions: ["BAN_MEMBERS"],
     });
   }
+
   /**
    * @param {CommandoMessage} message
    */

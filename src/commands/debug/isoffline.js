@@ -10,6 +10,7 @@ export default class IsOfflineCommand extends Command {
       userPermissions: ["ADMINISTRATOR"],
     });
   }
+
   /**
    * @param {CommandoMessage} message
    */
