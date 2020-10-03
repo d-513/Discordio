@@ -1,6 +1,6 @@
 import { Command, CommandoMessage } from "discord.js-commando";
 
-module.exports = class IsOfflineCommand extends Command {
+export default class IsOfflineCommand extends Command {
   constructor(client) {
     super(client, {
       name: "isoffline",
@@ -16,4 +16,4 @@ module.exports = class IsOfflineCommand extends Command {
   run(message) {
     return message.say("Working!");
   }
-};
+}

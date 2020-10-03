@@ -1,6 +1,6 @@
 import { Command, CommandoMessage } from "discord.js-commando";
 
-module.exports = class BanCommand extends Command {
+export default class BanCommand extends Command {
   constructor(client) {
     super(client, {
       name: "ban",
@@ -52,4 +52,4 @@ module.exports = class BanCommand extends Command {
     member.ban({ reason: `dio: banned by ${message.member.id} for ${reason}` });
     return message.say(`Banned ${member.user.tag}`);
   }
-};
+}

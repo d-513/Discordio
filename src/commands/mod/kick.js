@@ -1,6 +1,6 @@
 import { Command, CommandoMessage } from "discord.js-commando";
 
-module.exports = class KickCommand extends Command {
+export default class KickCommand extends Command {
   constructor(client) {
     super(client, {
       name: "kick",
@@ -49,4 +49,4 @@ module.exports = class KickCommand extends Command {
     member.kick(`dio: Kicked by ${message.member.id} for ${reason}`);
     return message.say(`Kicked ${member.user.tag}`);
   }
-};
+}
