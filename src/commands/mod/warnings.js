@@ -1,4 +1,4 @@
-import { Command, CommandoMessage, CommandoClient } from "discord.js-commando";
+import { Command, CommandoMessage } from "discord.js-commando";
 import { MessageEmbed } from "discord.js";
 import knex from "../../database";
 import forEach from "p-each-series";
