@@ -1,7 +1,3 @@
 node_modules
-configuration.js
 data
 tmp-commando
-dist
-lavalink
-.env
