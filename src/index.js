@@ -2,9 +2,8 @@ import * as config from "../configuration";
 import { CommandoClient } from "discord.js-commando";
 import path from "path";
 import ls from "log-symbols";
-import "../webui/server";
+import "./web/server";
 import knex from "./database";
-console.log(ls.info, "Launching discordio");
 
 const client = new CommandoClient(config.bot);
 
@@ -20,12 +19,13 @@ client.registry
   .registerCommandsIn(path.join(__dirname, "commands"));
 
 client.once("ready", async () => {
+  client.user.setPresence({ status: "online" });
   if (!(await knex.schema.hasTable("warnings"))) {
     await knex.schema.createTable("warnings", (t) => {
       t.increments("id");
-      t.integer("guild");
-      t.integer("user");
-      t.integer("warnedby");
+      t.string("guild");
+      t.string("user");
+      t.string("warnedby");
       t.string("reason");
     });
   }
@@ -42,3 +42,11 @@ client.once("ready", async () => {
 
 client.on("error", console.error);
 client.login(config.token);
+
+process.on("SIGINT", () => {
+  console.log("ded");
+  client.user
+    .setPresence({ status: "invisible" })
+    .then(() => process.exit())
+    .catch(() => process.exit());
+});
