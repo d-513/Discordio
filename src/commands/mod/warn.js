@@ -21,6 +21,7 @@ export default class WarnCommand extends Command {
         },
       ],
       userPermissions: ["KICK_MEMBERS"],
+      guildOnly: true,
     });
   }
 

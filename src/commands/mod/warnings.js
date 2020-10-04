@@ -17,6 +17,7 @@ export default class WarningsCommand extends Command {
           prompt: "What member do you want to see warnings for?",
         },
       ],
+      guildOnly: true,
     });
   }
 
