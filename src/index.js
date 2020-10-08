@@ -2,7 +2,6 @@ import * as config from "../configuration";
 import { CommandoClient } from "discord.js-commando";
 import path from "path";
 import ls from "log-symbols";
-import "./web/server";
 import knex from "./database";
 
 const client = new CommandoClient(config.bot);
@@ -13,6 +12,8 @@ client.registry
     ["debug", "Debugging"],
     ["mod", "Moderation"],
     ["audio", "Audio"],
+    ["config", "Configuration"],
+    ["covid", "Up-to-date coronavirus information"],
   ])
   .registerDefaultGroups()
   .registerDefaultCommands()
@@ -27,6 +28,21 @@ client.once("ready", async () => {
       t.string("user");
       t.string("warnedby");
       t.string("reason");
+    });
+  }
+  if (!(await knex.schema.hasTable("warnActions"))) {
+    await knex.schema.createTable("warnActions", (t) => {
+      t.increments("id");
+      t.string("guild");
+      t.integer("count");
+      t.string("action");
+    });
+  }
+  if (!(await knex.schema.hasTable("muteRoles"))) {
+    await knex.schema.createTable("muteRoles", (t) => {
+      t.increments("id");
+      t.string("guild");
+      t.string("roleid");
     });
   }
   console.log(
