@@ -8,10 +8,7 @@
     "dev": "nodemon .",
     "postinstall": "patch-package",
     "lint": "eslint src/**",
-    "fix": "eslint src/** --fix",
-    "run-web": "cd webui && npm run start",
-    "dev-web": "cd webui && npm run dev",
-    "build-web": "cd webui && npm run build"
+    "fix": "eslint src/** --fix"
   },
   "repository": {
     "type": "git",
@@ -27,21 +24,18 @@
   },
   "homepage": "https://github.com/dada513/discordio#readme",
   "dependencies": {
-    "async-exit-hook": "^2.0.1",
+    "@aero/corona": "^1.4.1",
     "discord.js": "^12.3.1",
     "discord.js-commando": "git://github.com/discordjs/Commando.git#198d7604e3725ee88dceab9b5f296edb1b7580a5",
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
-    "express": "^4.17.1",
-    "express-graphql": "^0.11.0",
     "fs-extra": "^9.0.1",
-    "graphql": "^15.3.0",
+    "is-docker": "^2.1.1",
     "knex": "^0.21.6",
     "log-symbols": "^4.0.0",
     "p-each-series": "^2.1.0",
     "patch-package": "^6.2.2",
-    "sqlite3": "^5.0.0",
-    "yaml": "^1.10.0"
+    "sqlite3": "^5.0.0"
   },
   "devDependencies": {
     "eslint": "^7.10.0",
