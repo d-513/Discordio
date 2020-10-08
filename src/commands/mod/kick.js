@@ -22,6 +22,7 @@ export default class KickCommand extends Command {
         },
       ],
       userPermissions: ["KICK_MEMBERS"],
+      clientPermissions: ["KICK_MEMBERS"],
     });
   }
 

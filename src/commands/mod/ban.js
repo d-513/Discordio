@@ -23,6 +23,7 @@ export default class BanCommand extends Command {
         },
       ],
       userPermissions: ["BAN_MEMBERS"],
+      clientPermissions: ["BAN_MEMBERS"],
     });
   }
 

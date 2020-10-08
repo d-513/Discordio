@@ -1,4 +1,5 @@
 import { Command, CommandoMessage } from "discord.js-commando";
+import { safeBan, safeKick } from "../../apis/safepunish";
 import knex from "../../database";
 
 export default class WarnCommand extends Command {
@@ -47,8 +48,21 @@ export default class WarnCommand extends Command {
     const warncount = await knex("warnings")
       .where({ user: member.user.id })
       .select("*");
-    return message.say(
+    message.say(
       `<@${member.user.id}> has been warned.\nThis user has ${warncount.length} warnings.`
     );
+    const [action] = await knex("warnActions")
+      .where({ guild: message.guild.id, count: warncount.length })
+      .select();
+    if (action) {
+      const rsn = `[WarnActions] User has ${action.count} warnings, executing action ${action.action}`;
+      message.say(rsn);
+      if (action.action === "kick") {
+        return safeKick(message, member, rsn);
+      }
+      if (action.action === "ban") {
+        return safeBan(message, member, rsn);
+      }
+    }
   }
 }

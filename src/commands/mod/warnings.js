@@ -10,6 +10,7 @@ export default class WarningsCommand extends Command {
       group: "mod",
       memberName: "warnings",
       description: "Lists the warnings of a member.",
+      aliases: ["warns"],
       args: [
         {
           key: "member",
