@@ -29,20 +29,12 @@ read invite
 echo -n "Would you like the bot to have a custom 'playing' status? If yes, submit it here. "
 read status
 
-echo -n "What port should the WebUI use? (80) "
-read web_port
-
-if [ -z $web_port ] ;then
-  web_port="80"
-fi
-
 echo "All done!"
 echo "TOKEN: $token"
 echo "PREFIX: $prefix"
 echo "OWNER: $owner"
 echo "INVITE: $invite"
 echo "STATUS: $status"
-echo "WEBPORT: $web_port"
 
 echo -n "Is it ok (y/n)? "
 read confirm
@@ -58,7 +50,6 @@ if [ $confirm = "Y" ] || [ $confirm = "y" ] ;then
     export DIO_OWNER=$owner
     export DIO_INVITE=$invite
     export DIO_STATUS=$status
-    export DIO_WEB_PORT=$webport
 else
     echo Aborted.
     exit
