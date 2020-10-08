@@ -1,0 +1,17 @@
+diff --git a/node_modules/@aero/corona/lib/CoronaClient.js b/node_modules/@aero/corona/lib/CoronaClient.js
+index be45f87..3a74092 100644
+--- a/node_modules/@aero/corona/lib/CoronaClient.js
++++ b/node_modules/@aero/corona/lib/CoronaClient.js
+@@ -48,8 +48,10 @@ class CoronaClient {
+ 			days = country.days;
+ 			country = null;
+ 		}
+-
+-		const res = await req(this.url).path('historical').path(country ?? 'all').query('lastdays', days).json();
++		let allorc;
++		if(country) allorc = country
++		else allorc = "all"
++		const res = await req(this.url).path('historical').path(allorc).query('lastdays', days).json();
+ 		return country
+ 			? {
+ 				name: res.country,
