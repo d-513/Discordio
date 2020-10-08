@@ -1,3 +1,8 @@
+import isDocker from "is-docker";
+import dotenv from "dotenv";
+if (!isDocker()) {
+  dotenv.config();
+}
 const env = process.env;
 // Bot's token
 export const token = env.DIO_TOKEN;
