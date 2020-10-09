@@ -58,10 +58,9 @@ export default class WarnCommand extends Command {
       const rsn = `[WarnActions] User has ${action.count} warnings, executing action ${action.action}`;
       message.say(rsn);
       if (action.action === "kick") {
-        return safeKick(message, member, rsn);
-      }
-      if (action.action === "ban") {
-        return safeBan(message, member, rsn);
+        safeKick(message, member, rsn);
+      } else if (action.action === "ban") {
+        safeBan(message, member, rsn);
       }
     }
   }

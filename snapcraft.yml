@@ -1,0 +1,20 @@
+# not ready for publish of the snap
+# currently just testing
+name: discordio-dada513
+version: git
+summary: A multipurpose Discord bot.
+description: |
+  Discordio - A multipurpose discord bot
+  Learn more at https://github.com/dada513/Discordio
+
+base: core18
+confinement: devmode
+
+parts:
+  discordio:
+    plugin: nodejs
+    source: .
+
+apps:
+  discordio:
+    command: dio

@@ -7,6 +7,12 @@ const env = process.env;
 // Bot's token
 export const token = env.DIO_TOKEN;
 
+// imgur token
+export const imgurToken = env.DIO_IMGUR_KEY;
+
+// hypixel token
+export const hypixelToken = env.DIO_HYPIXEL_KEY;
+
 // Additional bot configuration
 export const bot = {
   commandPrefix: env.DIO_PREFIX,
@@ -15,16 +21,13 @@ export const bot = {
   status: env.DIO_STATUS,
 };
 
-export let db;
-if (env.DIO_DB) db = JSON.stringify(env.DIO_DB);
-else
-  db = {
-    client: "sqlite3",
-    connection: {
-      filename: "./data/discordio.db",
-    },
-    useNullAsDefault: true,
-  };
+export const db = {
+  client: "sqlite3",
+  connection: {
+    filename: "./data/discordio.db",
+  },
+  useNullAsDefault: true,
+};
 
 export const web = {
   port: process.env.DIO_WEB_PORT,

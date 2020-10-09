@@ -1,0 +1,414 @@
+diff --git a/node_modules/hypixel-api-wrapper/index.js b/node_modules/hypixel-api-wrapper/index.js
+index b56e59a..03029ab 100644
+--- a/node_modules/hypixel-api-wrapper/index.js
++++ b/node_modules/hypixel-api-wrapper/index.js
+@@ -1,166 +1,213 @@
+-let https = require('axios').default
+-let key;
+-
+-function sendError(err){
+-    return {"error": true, "reason": err}
+-}
+-
+-function sendSuccess(){
+-    return {"error": false}
+-}
+-
+-function request(path, trufalse, extraquere){
+-    return new Promise((res, rej) => {
+-        let resp;
+-        let extra;
+-        if(trufalse == true){
+-            if(extraquere){
+-                extra = extraquere + "&key="+ key
+-            }else{
+-                extra = "?key=" + key
+-            }
+-        }else{
+-            if(extraquere){
+-                extra = extraquere + "?key="+ key
+-            }else{
+-                extra = "?key=" + key
+-            }
+-        }
++const axios = require("cachios");
+ 
+-        https.get(`https://api.hypixel.net${path}${extra}`).then(res => {
+-            if(res.data){
+-                resp = res.data
+-            }
+-        }).catch(err => {
+-            rej(sendError(`Request failed`))
+-        }).finally(function () {
+-            res(resp)
+-          });  
+-    })
++let key;
+ 
++function sendError(err) {
++  return { error: true, reason: err };
++}
++
++function sendSuccess() {
++  return { error: false };
++}
++
++function request(path, trufalse, extraquere) {
++  return new Promise((res, rej) => {
++    let resp;
++    let extra;
++    if (trufalse == true) {
++      if (extraquere) {
++        extra = extraquere + "&key=" + key;
++      } else {
++        extra = "?key=" + key;
++      }
++    } else {
++      if (extraquere) {
++        extra = extraquere + "?key=" + key;
++      } else {
++        extra = "?key=" + key;
++      }
+     }
+ 
+-function setKey(key1){
+-    if(!key1) return sendError("Please give an api key to set to!")
+-    key = key1
+-    return sendSuccess()
++    axios
++      .get(`https://api.hypixel.net${path}${extra}`, {
++        ttl: 15 * 60,
++      })
++      .then((res) => {
++        if (res.data) {
++          resp = res.data;
++        }
++      })
++      .catch((err) => {
++        rej(sendError(`Request failed`));
++      })
++      .finally(function () {
++        res(resp);
++      });
++  });
+ }
+ 
+-async function getWatchdogStats(){
+-    return request("/watchdogstats", false)
++function setKey(key1) {
++  if (!key1) return sendError("Please give an api key to set to!");
++  key = key1;
++  return sendSuccess();
+ }
+ 
+-async function boosters(){
+-    return request('/boosters', false)
++async function getWatchdogStats() {
++  return request("/watchdogstats", false);
+ }
+ 
+-async function findGuild(method, nameoruuid){
+-    let methods = ["name", 'uuid']
+-    if(!method || !methods.includes(method.toLowerCase())) return sendError("Couldn't find that method! Methods are " + methods.join(', '))
+-    if(!nameoruuid) return sendError(`No name or uuid provided!`)
+-    if(method.toLowerCase() === "name"){
+-        return request(`/findGuild`, true, `?byName=${nameoruuid}`)
+-    }else{
+-        return request('/findGuild', true, `?byUuid=${nameoruuid}`)
+-    }
++async function boosters() {
++  return request("/boosters", false);
+ }
+ 
+-async function friends(uuid){
+-    if(!uuid) return sendError(`You must supply a UUID to search for!`)
++async function findGuild(method, nameoruuid) {
++  let methods = ["name", "uuid"];
++  if (!method || !methods.includes(method.toLowerCase()))
++    return sendError(
++      "Couldn't find that method! Methods are " + methods.join(", ")
++    );
++  if (!nameoruuid) return sendError(`No name or uuid provided!`);
++  if (method.toLowerCase() === "name") {
++    return request(`/findGuild`, true, `?byName=${nameoruuid}`);
++  } else {
++    return request("/findGuild", true, `?byUuid=${nameoruuid}`);
++  }
++}
++
++async function friends(uuid) {
++  if (!uuid) return sendError(`You must supply a UUID to search for!`);
+ 
+-    return request('/friends', true, `?uuid=${uuid}`)
++  return request("/friends", true, `?uuid=${uuid}`);
+ }
+ 
+-async function gameCounts(){
+-    return request(`/gameCounts`, false)
++async function gameCounts() {
++  return request(`/gameCounts`, false);
+ }
+ 
+-async function guild(method, param){
+-    let methods = ["id", "name", "player"]
+-    if(!method || !methods.includes(method.toLowerCase())) return sendError("Couldn't find that method! Methods are " + methods.join(', '))
+-    if(!param) return sendError(`No name or uuid or id provided!`)
+-    if(method.toLowerCase() === "name"){
+-        return request('/guild', true, `?name=${param}`)
+-    }else if(method.toLowerCase() === "player"){
+-        return request('/guild', true, `?player=${param}`)
+-    }else{
+-        return request('/guild', true, `?id=${param}`)
+-    }
++async function guild(method, param) {
++  let methods = ["id", "name", "player"];
++  if (!method || !methods.includes(method.toLowerCase()))
++    return sendError(
++      "Couldn't find that method! Methods are " + methods.join(", ")
++    );
++  if (!param) return sendError(`No name or uuid or id provided!`);
++  if (method.toLowerCase() === "name") {
++    return request("/guild", true, `?name=${param}`);
++  } else if (method.toLowerCase() === "player") {
++    return request("/guild", true, `?player=${param}`);
++  } else {
++    return request("/guild", true, `?id=${param}`);
++  }
+ }
+ 
+-async function keyInfo(){
+-    return request('/key', false)
++async function keyInfo() {
++  return request("/key", false);
+ }
+ 
+-async function leaderboards(){
+-    return request('/leaderboards', false)
++async function leaderboards() {
++  return request("/leaderboards", false);
+ }
+ 
+-async function player(param){
+-    if(!param) return sendError(`Please provide a UUID to search!`)
+-    return request("/player", true, `?uuid=${param}`)
++async function player(param) {
++  if (!param) return sendError(`Please provide a UUID to search!`);
++  return request("/player", true, `?uuid=${param}`);
+ }
+ 
+-async function playerCount(){
+-    return request("/playerCount", false)
++async function playerCount() {
++  return request("/playerCount", false);
+ }
+ 
+-async function recentGames(param){
+-    if(!param) return sendError(`Please provide a UUID to search!`)
+-    return request("/recentGames", true, `?uuid=${param}`)
++async function recentGames(param) {
++  if (!param) return sendError(`Please provide a UUID to search!`);
++  return request("/recentGames", true, `?uuid=${param}`);
+ }
+ 
+-async function resources(param){
+-    let options = ["achievements", "challenges", "quests", "guilds/achievements", "guilds/permissions", "skyblock/collections", "skyblock/skills"]
+-    if(!param || !options.includes(param.toLowerCase())) return sendError(`Please provide a reasource to find! Options: ${options.join(', ')}`)
+-    return request(`/resources`, false, `/${param}`)
++async function resources(param) {
++  let options = [
++    "achievements",
++    "challenges",
++    "quests",
++    "guilds/achievements",
++    "guilds/permissions",
++    "skyblock/collections",
++    "skyblock/skills",
++  ];
++  if (!param || !options.includes(param.toLowerCase()))
++    return sendError(
++      `Please provide a reasource to find! Options: ${options.join(", ")}`
++    );
++  return request(`/resources`, false, `/${param}`);
+ }
+ 
+-async function status(param){
+-    if(!param) return sendError(`Please provide a UUID to search!`)
+-    return request("/status", true, `?uuid=${param}`)
++async function status(param) {
++  if (!param) return sendError(`Please provide a UUID to search!`);
++  return request("/status", true, `?uuid=${param}`);
+ }
+ 
+-async function auction(method, param){
+-    let methods = ["uuid", "auction_id", "player_id"]
+-    if(!method || !methods.includes(method.toLowerCase())) return sendError(`Please provide a method to use! Options: ${methods.join(', ')}`)
+-    if(!param) return sendError(`Please provide an UUID, auction_id, or player_id to search!`)
+-    if(method.toLowerCase() === "uuid"){
+-        return request('/skyblock/auction', true, `?uuid=${param}`)
+-    }else if(method.toLowerCase() === "player_id"){
+-        return request(`/skyblock/auction`, true, `?player=${param}`)
+-    }else{
+-        return request('/skyblock/auction', true, `?profile=${param}`)
+-    }
++async function auction(method, param) {
++  let methods = ["uuid", "auction_id", "player_id"];
++  if (!method || !methods.includes(method.toLowerCase()))
++    return sendError(
++      `Please provide a method to use! Options: ${methods.join(", ")}`
++    );
++  if (!param)
++    return sendError(
++      `Please provide an UUID, auction_id, or player_id to search!`
++    );
++  if (method.toLowerCase() === "uuid") {
++    return request("/skyblock/auction", true, `?uuid=${param}`);
++  } else if (method.toLowerCase() === "player_id") {
++    return request(`/skyblock/auction`, true, `?player=${param}`);
++  } else {
++    return request("/skyblock/auction", true, `?profile=${param}`);
++  }
+ }
+ 
+-async function auctions(page){
+-    if(!page) return request(`/skyblock/auctions`, false)
+-    return request('/skyblock/auctions', true, `?page=${page}`)
++async function auctions(page) {
++  if (!page) return request(`/skyblock/auctions`, false);
++  return request("/skyblock/auctions", true, `?page=${page}`);
+ }
+ 
+-async function bazaar(){
+-    return request('/skyblock/bazaar', false)
++async function bazaar() {
++  return request("/skyblock/bazaar", false);
+ }
+ 
+-async function news(){
+-    return request('/skyblock/news', false)
++async function news() {
++  return request("/skyblock/news", false);
+ }
+ 
+-async function profile(param){
+-    if(!param) return sendError(`Please provide a profile to search!`)
+-    return request('/skyblock/profile', true, `?profile=${param}`)
++async function profile(param) {
++  if (!param) return sendError(`Please provide a profile to search!`);
++  return request("/skyblock/profile", true, `?profile=${param}`);
+ }
+ 
+-async function profiles(param){
+-    if(!param) return sendError(`Please provide a UUID to search!`)
+-    return request('/skyblock/profiles', true, `?uuid=${param}`)
++async function profiles(param) {
++  if (!param) return sendError(`Please provide a UUID to search!`);
++  return request("/skyblock/profiles", true, `?uuid=${param}`);
+ }
+ 
+ module.exports.skyblock = {
+-    auction, auctions, bazaar, news, profile, profiles
+-}
++  auction,
++  auctions,
++  bazaar,
++  news,
++  profile,
++  profiles,
++};
+ 
+ module.exports = {
+-    status, resources, recentGames, playerCount, player, leaderboards, keyInfo, guild, gameCounts, friends, findGuild, boosters, setKey, getWatchdogStats
+-}
+\ No newline at end of file
++  status,
++  resources,
++  recentGames,
++  playerCount,
++  player,
++  leaderboards,
++  keyInfo,
++  guild,
++  gameCounts,
++  friends,
++  findGuild,
++  boosters,
++  setKey,
++  getWatchdogStats,
++};
+diff --git a/node_modules/hypixel-api-wrapper/package-lock.json b/node_modules/hypixel-api-wrapper/package-lock.json
+new file mode 100644
+index 0000000..262fa66
+--- /dev/null
++++ b/node_modules/hypixel-api-wrapper/package-lock.json
+@@ -0,0 +1,71 @@
++{
++  "name": "hypixel-api-wrapper",
++  "version": "1.0.3",
++  "lockfileVersion": 1,
++  "requires": true,
++  "dependencies": {
++    "axios": {
++      "version": "0.18.1",
++      "resolved": "https://registry.npmjs.org/axios/-/axios-0.18.1.tgz",
++      "integrity": "sha512-0BfJq4NSfQXd+SkFdrvFbG7addhYSBA2mQwISr46pD6E5iqkWg02RAs8vyTT/j0RTnoYmeXauBuSv1qKwR179g==",
++      "requires": {
++        "follow-redirects": "1.5.10",
++        "is-buffer": "^2.0.2"
++      }
++    },
++    "cachios": {
++      "version": "2.2.3",
++      "resolved": "https://registry.npmjs.org/cachios/-/cachios-2.2.3.tgz",
++      "integrity": "sha512-faYdB351vUfLuMGijnugV/4PMucgojGWr5/EpZG6IxmkL3oRRNsBYJ54bZk/RrMHRSCQ2MnJOQWc9xBTzdc8LA==",
++      "requires": {
++        "axios": "^0.18.0 || ^0.19.0",
++        "node-cache": "^4.1.1 || ^5.0.0",
++        "object-hash": "^2.0.0"
++      }
++    },
++    "clone": {
++      "version": "2.1.2",
++      "resolved": "https://registry.npmjs.org/clone/-/clone-2.1.2.tgz",
++      "integrity": "sha1-G39Ln1kfHo+DZwQBYANFoCiHQ18="
++    },
++    "debug": {
++      "version": "3.1.0",
++      "resolved": "https://registry.npmjs.org/debug/-/debug-3.1.0.tgz",
++      "integrity": "sha512-OX8XqP7/1a9cqkxYw2yXss15f26NKWBpDXQd0/uK/KPqdQhxbPa994hnzjcE2VqQpDslf55723cKPUOGSmMY3g==",
++      "requires": {
++        "ms": "2.0.0"
++      }
++    },
++    "follow-redirects": {
++      "version": "1.5.10",
++      "resolved": "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.5.10.tgz",
++      "integrity": "sha512-0V5l4Cizzvqt5D44aTXbFZz+FtyXV1vrDN6qrelxtfYQKW0KO0W2T/hkE8xvGa/540LkZlkaUjO4ailYTFtHVQ==",
++      "requires": {
++        "debug": "=3.1.0"
++      }
++    },
++    "is-buffer": {
++      "version": "2.0.4",
++      "resolved": "https://registry.npmjs.org/is-buffer/-/is-buffer-2.0.4.tgz",
++      "integrity": "sha512-Kq1rokWXOPXWuaMAqZiJW4XxsmD9zGx9q4aePabbn3qCRGedtH7Cm+zV8WETitMfu1wdh+Rvd6w5egwSngUX2A=="
++    },
++    "ms": {
++      "version": "2.0.0",
++      "resolved": "https://registry.npmjs.org/ms/-/ms-2.0.0.tgz",
++      "integrity": "sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g="
++    },
++    "node-cache": {
++      "version": "5.1.2",
++      "resolved": "https://registry.npmjs.org/node-cache/-/node-cache-5.1.2.tgz",
++      "integrity": "sha512-t1QzWwnk4sjLWaQAS8CHgOJ+RAfmHpxFWmc36IWTiWHQfs0w5JDMBS1b1ZxQteo0vVVuWJvIUKHDkkeK7vIGCg==",
++      "requires": {
++        "clone": "2.x"
++      }
++    },
++    "object-hash": {
++      "version": "2.0.3",
++      "resolved": "https://registry.npmjs.org/object-hash/-/object-hash-2.0.3.tgz",
++      "integrity": "sha512-JPKn0GMu+Fa3zt3Bmr66JhokJU5BaNBIh4ZeTlaCBzrBsOeXzwcKKAK1tbLiPKgvwmPXsDvvLHoWh5Bm7ofIYg=="
++    }
++  }
++}

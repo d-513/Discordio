@@ -1,5 +1,6 @@
 import { Command, CommandoMessage } from "discord.js-commando";
 import { MessageEmbed } from "discord.js";
+import loadingEmbed from "../../apis/loadingembed";
 import corona from "../../apis/corona";
 
 export default class CovStatsCommand extends Command {
@@ -17,6 +18,7 @@ export default class CovStatsCommand extends Command {
    */
   async run(message) {
     try {
+      const msg = await message.embed(loadingEmbed());
       const stats = await corona.total();
       const embed = new MessageEmbed()
         .setColor("RED")
@@ -27,7 +29,7 @@ export default class CovStatsCommand extends Command {
         .addField("Cases today", stats.todayCases)
         .addField("Deaths today", stats.todayDeaths)
         .addField("Last updated", stats.updated.toString());
-      return message.embed(embed);
+      return msg.edit(embed);
     } catch (ignore) {
       return message.say("Error getting covid stats");
     }

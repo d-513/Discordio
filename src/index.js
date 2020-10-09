@@ -1,10 +1,20 @@
 import * as config from "../configuration";
-import { CommandoClient } from "discord.js-commando";
+import { CommandoClient, SQLiteProvider } from "discord.js-commando";
+import * as sqlite from "sqlite";
+import sqlite3 from "sqlite3";
 import path from "path";
 import ls from "log-symbols";
 import knex from "./database";
 
 const client = new CommandoClient(config.bot);
+sqlite
+  .open({
+    filename: config.db.connection.filename,
+    driver: sqlite3.Database,
+  })
+  .then((db) => {
+    client.setProvider(new SQLiteProvider(db));
+  });
 
 client.registry
   .registerDefaultTypes()
@@ -14,6 +24,8 @@ client.registry
     ["audio", "Audio"],
     ["config", "Configuration"],
     ["covid", "Up-to-date coronavirus information"],
+    ["minecraft", "Minecraft Utilities"],
+    ["hypixel", "Hypixel minecraft server utils"],
   ])
   .registerDefaultGroups()
   .registerDefaultCommands()
@@ -43,6 +55,13 @@ client.once("ready", async () => {
       t.increments("id");
       t.string("guild");
       t.string("roleid");
+    });
+  }
+  if (!(await knex.schema.hasTable("mcServIcons"))) {
+    await knex.schema.createTable("mcServIcons", (t) => {
+      t.increments("id");
+      t.string("ip");
+      t.string("url");
     });
   }
   console.log(
