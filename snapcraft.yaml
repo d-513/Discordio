@@ -9,9 +9,12 @@ confinement: devmode
 parts:
   discordio:
     plugin: nodejs
-    source: https://github.com/dada513/Discordio/archive/master.tar.gz
+    nodejs-version: "12.19.0"
+    nodejs-package-manager: "yarn"
+    source-type: git
+    source: https://github.com/dada513/Discordio.git
 
 apps:
   discordio:
-    command: discordio
+    command: node .
     daemon: simple
