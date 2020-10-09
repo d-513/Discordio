@@ -1,5 +1,3 @@
-name: discordio
-version: git
 summary: A multipurpose discord bot
 description: https://github.com/dada513/Discordio
 
@@ -16,5 +14,6 @@ parts:
 
 apps:
   discordio:
-    command: node .
+    command: discordio
     daemon: simple
+    restart-delay: 5s

@@ -2,7 +2,7 @@
   "name": "discordio",
   "version": "1.0.0",
   "description": "A modular, fully-featured discord bot made with Commando.",
-  "main": "esm-loader.js",
+  "main": "launcher.js",
   "scripts": {
     "prod": "node .",
     "dev": "nodemon .",
@@ -14,6 +14,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dada513/discordio.git"
+  },
+  "bin": {
+    "discordio": "launcher.js"
   },
   "keywords": [
     "discordio"
