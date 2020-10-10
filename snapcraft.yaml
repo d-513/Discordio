@@ -1,21 +1,20 @@
-version: git
-name: discordio-dada513
+version: 1.0.5
+name: discordio
 summary: A multipurpose discord bot
-description: https://github.com/dada513/Discordio
-
+description: dio #https://github.com/dada513/Discordio
+grade: devel
 base: core18
 confinement: devmode
 
 parts:
-  discordio:
+  node:
     plugin: nodejs
     nodejs-version: "12.19.0"
     nodejs-package-manager: "yarn"
-    source-type: git
-    source: https://github.com/dada513/Discordio.git
+    source: .
 
 apps:
   discordio:
-    command: discordio
+    command: /usr/bin/node launcher.js
     daemon: simple
     restart-delay: 5s

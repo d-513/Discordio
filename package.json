@@ -15,9 +15,6 @@
     "type": "git",
     "url": "git+https://github.com/dada513/discordio.git"
   },
-  "bin": {
-    "discordio": "launcher.js"
-  },
   "keywords": [
     "discordio"
   ],
