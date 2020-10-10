@@ -1,7 +1,7 @@
 import isDocker from "is-docker";
 import dotenv from "dotenv";
 if (!isDocker()) {
-  dotenv.config();
+  dotenv.config(process.env.DIO_ENV);
 }
 const env = process.env;
 // Bot's token
