@@ -46,10 +46,11 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: yarn install --production=true
       - run: yarn version --minor
-      - run: cp docs/README.md README.md
       - run: |
-        git config --global user.email "dummy@dummy.dummy"
-        git config --global user.name "dummy"
+          git config --global user.email "dummy@dummy.dummy"
+          git config --global user.name "dummy"
+      - run: cp docs/README.md README.md
+
       - run: yarn publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
