@@ -8,13 +8,13 @@
     "dev": "nodemon .",
     "postinstall": "patch-package",
     "lint": "eslint src/**",
-    "fix": "eslint src/** --fix",
-    "package": "pkg"
+    "fix": "eslint src/** --fix"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dada513/discordio.git"
   },
+  "bin": "launcher.js",
   "keywords": [
     "discordio"
   ],
