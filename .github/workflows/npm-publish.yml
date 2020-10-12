@@ -19,21 +19,21 @@ jobs:
   bump-version:
     needs: lint
     runs-on: ubuntu-latest
-    steps: 
-        - name: Install git 
-          run: apt-get install -y git
-        - uses: actions/checkout@v2
-        - uses: actions/setup-node@v1
-          with:
-            node-version: 12
-            registry-url: https://registry.npmjs.org/
-        - run: yarn install --production=true
-        - run: yarn version --minor
-        - uses: EndBug/add-and-commit@v5
-          with:
-            author_name: Commit Bot
-            author_email: commitbot@noreply.dada513.eu
-            message: 'Version bump'
+    steps:
+      - name: Install git
+        run: sudo apt-get install -y git
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+      - run: yarn install --production=true
+      - run: yarn version --minor
+      - uses: EndBug/add-and-commit@v5
+        with:
+          author_name: Commit Bot
+          author_email: commitbot@noreply.dada513.eu
+          message: "Version bump"
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Leave this line unchanged
   publish-npm:
