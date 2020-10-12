@@ -20,6 +20,15 @@ jobs:
     needs: lint
     runs-on: ubuntu-latest
     steps: 
+        - name: Install git 
+          run: apt-get install -y git
+        - uses: actions/checkout@v2
+        - uses: actions/setup-node@v1
+          with:
+            node-version: 12
+            registry-url: https://registry.npmjs.org/
+        - run: yarn install --production=true
+        - run: yarn version --minor
         - uses: EndBug/add-and-commit@v5
           with:
             author_name: Commit Bot
