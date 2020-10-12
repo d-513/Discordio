@@ -1,5 +1,6 @@
 import { Command, CommandoMessage } from "discord.js-commando";
 import { MessageEmbed } from "discord.js";
+import loadingEmbed from "../../apis/loadingembed";
 import knex from "../../database";
 import * as util from "./util";
 
@@ -55,7 +56,7 @@ export default class DenyCommand extends Command {
       return message.say(`No suggestion with id ${id} found.`);
     }
 
-    const msg = await ch.send("Hold on...");
+    const msg = await ch.send(loadingEmbed());
 
     const embed = new MessageEmbed()
       .setAuthor(suggestion.author_tag, suggestion.author_avatar)

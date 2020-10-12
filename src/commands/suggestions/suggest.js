@@ -1,5 +1,6 @@
 import { Command, CommandoMessage } from "discord.js-commando";
 import { MessageEmbed } from "discord.js";
+import loadingEmbed from "../../apis/loadingembed";
 import * as util from "./util";
 import knex from "../../database";
 
@@ -38,7 +39,7 @@ export default class SuggestCommand extends Command {
       Create it with \`${this.client.commandPrefix}setupSuggestions\``);
     }
 
-    const m = await ch.send("Hold on...");
+    const m = await ch.send(loadingEmbed());
     await knex("suggestions").insert({
       guild: message.guild.id,
       messageid: m.id,

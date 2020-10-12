@@ -1,6 +1,7 @@
 import { Command, CommandoMessage } from "discord.js-commando";
 import { MessageEmbed } from "discord.js";
 import knex from "../../database";
+import loadingEmbed from "../../apis/loadingembed";
 import * as util from "./util";
 
 export default class ConsiderCommand extends Command {
@@ -56,7 +57,7 @@ export default class ConsiderCommand extends Command {
       return message.say(`No suggestion with id ${id} found.`);
     }
 
-    const msg = await ch.send("Hold on...");
+    const msg = await ch.send(loadingEmbed());
 
     const embed = new MessageEmbed()
       .setAuthor(suggestion.author_tag, suggestion.author_avatar)
