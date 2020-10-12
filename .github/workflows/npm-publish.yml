@@ -45,11 +45,11 @@ jobs:
           node-version: 12
           registry-url: https://registry.npmjs.org/
       - run: yarn install --production=true
-      - run: yarn version --minor
       - run: |
           git config --global user.email "dummy@dummy.dummy"
           git config --global user.name "dummy"
       - run: cp docs/README.md README.md
+      - run: yarn version --minor
 
       - run: yarn publish --access public
         env:
