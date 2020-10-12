@@ -32,11 +32,7 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: yarn install --production=true
       - run: yarn version --minor
-      - run: cat package.json
-      - uses: EndBug/add-and-commit@v5
-        with:
-          add: "."
-          message: "Version bump"
+      - run: git push
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Leave this line unchanged
   publish-npm:
