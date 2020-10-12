@@ -26,6 +26,7 @@ client.registry
     ["covid", "Up-to-date coronavirus information"],
     ["minecraft", "Minecraft Utilities"],
     ["hypixel", "Hypixel minecraft server utils"],
+    ["suggestions", "Suggestions"],
   ])
   .registerDefaultGroups()
   .registerDefaultCommands()
@@ -64,6 +65,23 @@ client.once("ready", async () => {
       t.string("url");
     });
   }
+  if (!(await knex.schema.hasTable("suggestionChannels"))) {
+    await knex.schema.createTable("suggestionChannels", (t) => {
+      t.increments("id");
+      t.string("guild");
+      t.string("channelid");
+    });
+  }
+  if (!(await knex.schema.hasTable("suggestions"))) {
+    await knex.schema.createTable("suggestions", (t) => {
+      t.increments("id");
+      t.string("guild");
+      t.string("messageid");
+      t.string("content");
+      t.string("author_tag");
+      t.string("author_avatar");
+    });
+  }
   console.log(
     ls.success,
     `Logged in as ${client.user.tag}! (${client.user.id})`
@@ -77,11 +95,3 @@ client.once("ready", async () => {
 
 client.on("error", console.error);
 client.login(config.token);
-
-process.on("SIGINT", () => {
-  console.log("ded");
-  client.user
-    .setPresence({ status: "invisible" })
-    .then(() => process.exit())
-    .catch(() => process.exit());
-});

@@ -30,7 +30,6 @@ export default class WarnCommand extends Command {
    * @param {CommandoMessage} message
    */
   // TODO Advanced permission system (using webui) - set 'moderator' roles that can warn
-  // TODO Warning actions: if player has x warnings ban him
   async run(message, { member, reason }) {
     if (
       !message.member.roles.highest.position > member.roles.highest.position &&
