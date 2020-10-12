@@ -16,8 +16,19 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: yarn install
       - run: yarn run lint
-  publish-npm:
+  bump-version:
     needs: lint
+    runs-on: ubuntu-latest
+    steps: 
+        - uses: EndBug/add-and-commit@v5
+          with:
+            author_name: Commit Bot
+            author_email: commitbot@noreply.dada513.eu
+            message: 'Version bump'
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Leave this line unchanged
+  publish-npm:
+    needs: bump-version
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
