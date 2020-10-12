@@ -1,5 +1,5 @@
 {
-  "name": "discordio",
+  "name": "@dada513/discordio",
   "version": "1.0.0",
   "description": "A modular, fully-featured discord bot made with Commando.",
   "main": "launcher.js",
@@ -26,6 +26,7 @@
   "homepage": "https://github.com/dada513/discordio#readme",
   "dependencies": {
     "@aero/corona": "^1.4.1",
+    "@anonymousg/lavajs": "^3.5.0",
     "cachios": "^2.2.3",
     "discord.js": "^12.3.1",
     "discord.js-commando": "git://github.com/discordjs/Commando.git#198d7604e3725ee88dceab9b5f296edb1b7580a5",
@@ -38,6 +39,7 @@
     "js-base64": "^3.5.2",
     "knex": "^0.21.6",
     "log-symbols": "^4.0.0",
+    "ngrok": "^3.3.0",
     "p-each-series": "^2.1.0",
     "patch-package": "^6.2.2",
     "sqlite": "^4.0.15",
