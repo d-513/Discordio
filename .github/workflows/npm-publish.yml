@@ -34,8 +34,7 @@ jobs:
       - run: yarn version --minor
       - uses: EndBug/add-and-commit@v5
         with:
-          author_name: Commit Bot
-          author_email: commitbot@noreply.dada513.eu
+          add: "."
           message: "Version bump"
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Leave this line unchanged
