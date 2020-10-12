@@ -4,7 +4,7 @@ name: ESLint
 on: [push, pull_request]
 
 jobs:
-  publish-npm:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
