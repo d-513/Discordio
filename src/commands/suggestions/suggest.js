@@ -19,6 +19,7 @@ export default class SuggestCommand extends Command {
         },
       ],
       guildOnly: true,
+      clientPermissions: ["MANAGE_MESSAGES"],
     });
   }
 
@@ -55,7 +56,9 @@ export default class SuggestCommand extends Command {
       .setTitle(`Suggestion #${id.id}`)
       .setDescription(msg)
       .setColor("YELLOW");
-    message.say("Done");
+    await m.react("👍");
+    await m.react("👎");
+    await message.delete();
     return m.edit("", embed);
   }
 }
