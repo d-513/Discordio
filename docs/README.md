@@ -1,3 +1,5 @@
+![Discordio](https://i.imgur.com/uEkhyrp.png)
+
 # Discordio
 
 [![Build Status](https://github.com/dada513/Discordio/workflows/ESLint/badge.svg)](https://github.com/dada513/Discordio/actions?query=workflow%3A%22ESLint%22)
@@ -32,25 +34,19 @@ The recommended way to run Discordio is via [Docker](https://docker.com)
 Our docker image is located at [DockerHub](https://hub.docker.com/r/dada513/discordio)
 
 ```bash
-docker run \
-  -e DIO_TOKEN=your_bot_token \
-  -e DIO_PREFIX=! \
-  -e DIO_OWNER=ownerid \
-  -e DIO_STATUS=Running \
-  -e DIO_INVITE=https://discord.gg/p7Fr7mc \
-  -e DIO_IMGUR_KEY=imgkey \
-  -e DIO_HYPIXEL_KEY=hypkey \
-  dada513/discordio
+docker run -v ./discordio:/dio dada513/discordio
 ```
-
-**TIP:** When using docker on windows in PowerShell, replace `\` with `\``.
 
 You can also run it in standalone mode:
 
 ```bash
 yarn global add @dada513/discordio # or npm i -g @dada513/discordio
-discordio # Runs the bot, specify the config in .env in the current directory
+discordio # Runs the bot, you need a process manager like pm2 to keep it alive when you close the terminal
 ```
+
+### Configuration
+
+See [CONFIG.md](./config.md)
 
 ### Versioning
 
@@ -58,6 +54,24 @@ Every commit is a `minor` release.
 A `major` release is pushed when the bot gets _compatibility breaking_ updates.  
 The source is automatically pushed to NPM.  
 Versions are automatically bumped by a github action.
+
+### TODO
+
+- [x] Moderation commands
+- [x] Minecraft commands
+- [ ] Hypixel commands
+- [x] CoronaVirus stats
+- [x] Basic music commands
+- [x] Search commands (DuckDuckGo, Google and wikipedia)
+- [x] Moderation commands
+- [x] Warning actions
+- [x] Suggestions
+- [ ] Hosted versions of the bot
+- [ ] WebUI
+- [x] Database
+- [ ] Twitch stream notify
+- [ ] Youtube upload notify
+- [ ] Install guide
 
 ### License
 
