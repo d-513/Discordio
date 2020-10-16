@@ -29,7 +29,7 @@ export default class CovCountryStatsCommand extends Command {
       const stats = await corona.country(country);
       const embed = new MessageEmbed()
         .setColor("RED")
-        .setTitle("Global COVID-19 totals")
+        .setTitle(`${country} COVID-19 totals`)
         .addField("Total cases", stats.cases)
         .addField("Total deaths", stats.deaths)
         .addField("Total recovered", stats.recovered)
