@@ -1,0 +1,36 @@
+config-v: 1 # don't touch, config version
+
+bot:
+  # Bot's token, see https://discord.com/developers/
+  token: "your-bot-token"
+  # Prefix for the commands
+  prefix: "!"
+  # Bot owner ID
+  owner: "123456789"
+  # Support server invite
+  invite: "https://discord.gg/p7Fr7mc"
+  # Bot's 'playing' status
+  status: "Discordio selfhosted!"
+
+# Database settings
+
+database:
+  client: "sqlite3"
+  connection:
+    filename: "./data/discordio.db"
+  useNullAsDefault: true
+
+# external APIs
+external:
+  apis:
+    imgur_key: ""
+    hypixel_key: ""
+
+# LavaLink nodes
+
+lavaNodes:
+  - id: 1
+    host: "127.0.0.1"
+    port: 2333
+    password: "LLpassword"
+    retries: 5

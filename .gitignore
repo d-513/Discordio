@@ -1,8 +1,5 @@
 node_modules
 data
 tmp-commando
-
-.DS_Store
-webui/src/node_modules/@sapper/
-webui/__sapper__/
-.env
+config.yml
+lavalink

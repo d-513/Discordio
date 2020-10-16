@@ -1,43 +1,18 @@
-import isDocker from "is-docker";
-import dotenv from "dotenv";
-if (!isDocker()) {
-  dotenv.config(process.env.DIO_ENV);
+import YAML from "yaml";
+import fs from "fs-extra";
+import ls from "log-symbols";
+
+export const config = YAML.parse(fs.readFileSync("./config.yml", "utf8"));
+
+if (config.version === 1) {
+  console.log(ls.info, "[upgrader] did not migrate, config version is latest");
 }
-const env = process.env;
-// Bot's token
-export const token = env.DIO_TOKEN;
 
-// imgur token
-export const imgurToken = env.DIO_IMGUR_KEY;
+export const token = config.bot.token;
+export const imgurToken = config.external.apis.imgur_key;
 
-// hypixel token
-export const hypixelToken = env.DIO_HYPIXEL_KEY;
+export const hypixelToken = config.external.apis.hypixel_key;
+export const bot = config.bot;
 
-// Additional bot configuration
-export const bot = {
-  commandPrefix: env.DIO_PREFIX,
-  owner: env.DIO_OWNER,
-  invite: env.DIO_SERVER,
-  status: env.DIO_STATUS,
-};
-
-export const db = {
-  client: "sqlite3",
-  connection: {
-    filename: "./data/discordio.db",
-  },
-  useNullAsDefault: true,
-};
-
-export const web = {
-  port: process.env.DIO_WEB_PORT,
-};
-
-export const lavaLinkNodes = [
-  {
-    host: "127.0.0.1",
-    port: 2333,
-    password: "LLpassword",
-    retries: 5,
-  },
-];
+export const db = config.database;
+export const lavaLinkNodes = config.lavaNodes;
