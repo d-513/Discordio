@@ -2,11 +2,16 @@ import * as config from "../configuration";
 import { CommandoClient, SQLiteProvider } from "discord.js-commando";
 import * as sqlite from "sqlite";
 import sqlite3 from "sqlite3";
+import { LavaClient } from "@anonymousg/lavajs";
 import path from "path";
 import ls from "log-symbols";
 import knex from "./database";
 
-const client = new CommandoClient(config.bot);
+export const client = new CommandoClient(config.bot);
+/**
+ * @type {LavaClient}
+ */
+export let lavaClient;
 sqlite
   .open({
     filename: config.db.connection.filename,
@@ -34,6 +39,12 @@ client.registry
   .registerCommandsIn(path.join(__dirname, "commands"));
 
 client.once("ready", async () => {
+  // Voice
+  lavaClient = new LavaClient(client, config.lavaLinkNodes);
+  lavaClient.on("nodeError", (err) => {
+    console.error(ls.error, "Could not connect to lava node", err.toString());
+  });
+
   client.user.setPresence({ status: "online" });
   if (!(await knex.schema.hasTable("warnings"))) {
     await knex.schema.createTable("warnings", (t) => {
@@ -94,5 +105,10 @@ client.once("ready", async () => {
   client.user.setActivity(config.bot.status);
 });
 
+console.log(ls.info, "Logging in...");
 client.on("error", console.error);
 client.login(config.token);
+
+process.on("uncaughtException", (err) => {
+  console.log(ls.error, "[exceptionCatcher]", "Saved procses from dying:", err);
+});
