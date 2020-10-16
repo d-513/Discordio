@@ -65,7 +65,7 @@ export default class PlayCommand extends Command {
         .setColor("RED");
       msg.edit(embed);
     } else {
-      await player.queue.add(res.tracks);
+      await player.queue.add(song.tracks);
       const embed = new MessageEmbed()
         .setAuthor(song.author)
         .setTitle("Playlist added to queue")

@@ -54,7 +54,7 @@ export default class GetHypixelBoostersCommand extends Command {
       ].join("\n");
     };
     const promises = [];
-    boosters.boosters.forEach((booster, index) => {
+    boosters.boosters.forEach((booster) => {
       promises.push(boosterInfo(booster));
     });
     await Promise.all(promises);

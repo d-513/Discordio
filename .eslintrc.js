@@ -17,4 +17,5 @@ module.exports = {
     "jsdoc/no-undefined-types": 1,
   },
   plugins: ["prettier", "jsdoc"],
+  ignorePatterns: ["**/indexes/**/*.md"],
 };
