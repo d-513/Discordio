@@ -18,6 +18,7 @@ While easily self-hostable, it will also have a public instance for anyone to us
 
 ### Featrures
 
+- Self-hostable
 - Suggestions
 - Moderation commands
 - Warning system
@@ -25,8 +26,11 @@ While easily self-hostable, it will also have a public instance for anyone to us
 - Automatic mute system
 - COVID-19 statistics
 - Info about minecraft servers/users
-- Stats of the Hypixel minecraft server  
-  **AND MORE**: This bot is in development and i'm adding new features every day.
+- Hypixel stats (minecraft)
+- Music player
+- Search - Full google, duckduckgo and wikipedia search implementation inside of discord.  
+  **AND MORE**: This bot is in development and i'm adding new features every day.  
+  **POST** any ideas or issues in the issues tab or on our discord
 
 ### Running
 
