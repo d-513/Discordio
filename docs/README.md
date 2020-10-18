@@ -64,6 +64,7 @@ Versions are automatically bumped by a github action.
 - [x] Moderation commands
 - [x] Minecraft commands
 - [ ] Hypixel commands
+- [x] Reddit images
 - [x] CoronaVirus stats
 - [x] Basic music commands
 - [x] Search commands (DuckDuckGo, Google and wikipedia)
