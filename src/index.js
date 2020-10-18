@@ -33,6 +33,7 @@ client.registry
     ["hypixel", "Hypixel minecraft server utils"],
     ["suggestions", "Suggestions"],
     ["search", "Search Engines"],
+    ["fun", "Fun"],
   ])
   .registerDefaultGroups()
   .registerDefaultCommands()

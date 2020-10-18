@@ -53,6 +53,15 @@
     cheerio "^1.0.0-rc.3"
     esm "^3.2.25"
 
+"@dada513/subreddit-avatar-image@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@dada513/subreddit-avatar-image/-/subreddit-avatar-image-1.0.0.tgz#914785818fa53eba44474f0f8fe84bfb6b9ceb65"
+  integrity sha512-j2ciyr1fP4429UJHfYL3zfzyi+8FLXFSaftC4Kk+/knIVLxlAts5zW8AibbcQKtlOsjOCwVI1ZKyRhezjiJVIw==
+  dependencies:
+    axios "^0.20.0"
+    cheerio "^1.0.0-rc.3"
+    esm "^3.2.25"
+
 "@dada513/wikipedia-search@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@dada513/wikipedia-search/-/wikipedia-search-1.0.1.tgz#5755bc67bb9fb1430fae30e92407bf9127fd4646"
@@ -1634,6 +1643,13 @@ ignore@^4.0.6:
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-4.0.6.tgz#750e3db5862087b4737ebac8207ffd1ef27b25fc"
   integrity sha512-cyFDKrqc/YdcWFniJhzI42+AzS+gNwmUzOSFcRCQYwySuBBBy/KjuxWLZ/FHEH6Moq1NizMOBWyTcv8O4OZIMg==
 
+imageapi.js@^1.0.19:
+  version "1.0.19"
+  resolved "https://registry.yarnpkg.com/imageapi.js/-/imageapi.js-1.0.19.tgz#fb7a8ee46250b1014dfd562ac4e376fb379a7b9e"
+  integrity sha512-pnS0vrswIjv8QRB8L9uEFwsS1WVDG5uVWNLJi/ACwinFBD7I/GFVwXNP02QkxK3xX3aRCWfVngz8cM0srl9EDg==
+  dependencies:
+    node-fetch "^2.6.1"
+
 imgur@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/imgur/-/imgur-0.3.1.tgz#8b13b424a88f91239c147af9ad78283510065398"
@@ -2313,7 +2329,7 @@ node-addon-api@2.0.0:
   dependencies:
     clone "2.x"
 
-node-fetch@^2.6.0:
+node-fetch@^2.6.0, node-fetch@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
   integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
