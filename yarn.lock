@@ -53,15 +53,6 @@
     cheerio "^1.0.0-rc.3"
     esm "^3.2.25"
 
-"@dada513/subreddit-avatar-image@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@dada513/subreddit-avatar-image/-/subreddit-avatar-image-1.0.0.tgz#914785818fa53eba44474f0f8fe84bfb6b9ceb65"
-  integrity sha512-j2ciyr1fP4429UJHfYL3zfzyi+8FLXFSaftC4Kk+/knIVLxlAts5zW8AibbcQKtlOsjOCwVI1ZKyRhezjiJVIw==
-  dependencies:
-    axios "^0.20.0"
-    cheerio "^1.0.0-rc.3"
-    esm "^3.2.25"
-
 "@dada513/wikipedia-search@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@dada513/wikipedia-search/-/wikipedia-search-1.0.1.tgz#5755bc67bb9fb1430fae30e92407bf9127fd4646"

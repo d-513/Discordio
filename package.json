@@ -28,7 +28,6 @@
     "@aero/corona": "^1.4.1",
     "@anonymousg/lavajs": "^3.5.0",
     "@dada513/duckduckscrape": "^1.0.1",
-    "@dada513/subreddit-avatar-image": "^1.0.0",
     "@dada513/wikipedia-search": "^1.0.1",
     "cachios": "^2.2.3",
     "dayjs": "^1.9.3",

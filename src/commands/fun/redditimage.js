@@ -1,6 +1,5 @@
 import { Command, CommandoMessage } from "discord.js-commando";
 import { MessageEmbed } from "discord.js";
-import { getAvatar } from "@dada513/subreddit-avatar-image";
 import imageapi from "imageapi.js";
 import loadingEmbed from "../../apis/loadingembed";
 
@@ -30,19 +29,16 @@ export default class RedditImageCommand extends Command {
     let img;
     try {
       img = await imageapi(subreddit);
-    } catch (err) {
+    } catch (ignore) {
       return msg.edit(new MessageEmbed().setTitle("No such subreddit"));
     }
     const embed = new MessageEmbed()
-      .setAuthor(`r/${subreddit}`)
+      .setAuthor(`r/${subreddit}`, "https://i.imgur.com/bcxwh4B.png")
       .setImage(img)
       .setFooter(
         "User-Generated Content - From Reddit",
         "https://i.imgur.com/i8yFq9c.png"
       );
-    msg.edit(embed);
-    const icon = await getAvatar(subreddit);
-    embed.setAuthor(`r/${subreddit}`, icon);
     return msg.edit(embed);
   }
 }

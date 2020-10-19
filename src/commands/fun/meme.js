@@ -1,6 +1,5 @@
 import { Command, CommandoMessage } from "discord.js-commando";
 import { MessageEmbed } from "discord.js";
-import { getAvatar } from "@dada513/subreddit-avatar-image";
 import imageapi from "imageapi.js";
 import loadingEmbed from "../../apis/loadingembed";
 
@@ -21,15 +20,12 @@ export default class MemeCommand extends Command {
     const msg = await message.embed(loadingEmbed());
     const img = await imageapi("memes");
     const embed = new MessageEmbed()
-      .setAuthor("r/memes")
+      .setAuthor("r/memes", "https://i.imgur.com/bcxwh4B.png")
       .setImage(img)
       .setFooter(
         "User-Generated Content - From Reddit",
         "https://i.imgur.com/i8yFq9c.png"
       );
-    msg.edit(embed);
-    const icon = await getAvatar("memes");
-    embed.setAuthor("r/memes", icon);
     return msg.edit(embed);
   }
 }
