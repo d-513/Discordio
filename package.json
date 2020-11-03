@@ -41,6 +41,7 @@
     "js-base64": "^3.5.2",
     "knex": "^0.21.6",
     "log-symbols": "^4.0.0",
+    "nconf": "^0.10.0",
     "p-each-series": "^2.1.0",
     "patch-package": "^6.2.2",
     "serp": "^2.1.0",
