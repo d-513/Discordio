@@ -1,4 +1,4 @@
-config-v: 1 # don't touch, config version
+version: 2 # don't touch, config version
 
 bot:
   # Bot's token, see https://discord.com/developers/
@@ -11,6 +11,11 @@ bot:
   invite: "https://discord.gg/p7Fr7mc"
   # Bot's 'playing' status
   status: "Discordio selfhosted!"
+
+# Daemon, for WebUI. Refer to setup docs
+
+daemon:
+  port: 3500
 
 # Database settings
 
