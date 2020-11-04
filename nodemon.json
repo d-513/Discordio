@@ -1,3 +1,4 @@
 {
-  "ext": "js,md"
+  "ext": "js,md",
+  "exec": "babel-node src/index.js"
 }

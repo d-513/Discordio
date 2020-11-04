@@ -2,7 +2,7 @@ import { Command, CommandoMessage } from "discord.js-commando";
 import { MessageEmbed } from "discord.js";
 import { uuidToNameHistory } from "../../apis/mojang";
 import dayjs from "dayjs";
-import * as config from "../../../configuration";
+import * as config from "../../configuration";
 import hypixel from "hypixel-api-wrapper";
 import gameids from "./indexes/gameids/gameids";
 hypixel.setKey(config.hypixelToken);

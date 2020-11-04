@@ -1,4 +1,4 @@
-import * as config from "../configuration";
+import * as config from "./configuration";
 import { CommandoClient, SQLiteProvider } from "discord.js-commando";
 import * as sqlite from "sqlite";
 import sqlite3 from "sqlite3";

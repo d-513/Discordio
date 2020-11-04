@@ -1,7 +1,7 @@
 import { Command, CommandoMessage } from "discord.js-commando";
 import { MessageEmbed } from "discord.js";
 import { serverStatus } from "../../apis/mcsrv";
-import * as config from "../../../configuration";
+import * as config from "../../configuration";
 import knex from "../../database";
 import loadingEmbed from "../../apis/loadingembed";
 import imgur from "imgur";
