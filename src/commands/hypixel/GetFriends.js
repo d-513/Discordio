@@ -1,7 +1,7 @@
 import { Command, CommandoMessage } from "discord.js-commando";
 import { MessageEmbed } from "discord.js";
 import { usernameToUUID, uuidToNameHistory } from "../../apis/mojang";
-import * as config from "../../../configuration";
+import * as config from "../../configuration";
 import hypixel from "hypixel-api-wrapper";
 import loadingEmbed from "../../apis/loadingembed";
 hypixel.setKey(config.hypixelToken);
