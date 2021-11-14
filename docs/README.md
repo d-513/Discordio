@@ -1,5 +1,9 @@
 ![Discordio](https://i.imgur.com/uEkhyrp.png)
 
+# IMPORTANT ANNOUCEMENT:
+Discordio is being recoded to use slash commands using the [botcommander](https://github.com/dada513/botcommander) framework.  
+Right now do not use the bot, as the discord.js-commando version hasnt been updated in a while and modules are deprecated
+
 # Discordio
 
 [![Build Status](https://github.com/dada513/Discordio/workflows/ESLint/badge.svg)](https://github.com/dada513/Discordio/actions?query=workflow%3A%22ESLint%22)
