@@ -1,3 +1,8 @@
+# discordio is kil
+# i dont like discords treatment of bot devs
+# old readme:
+
+
 ![Discordio](https://i.imgur.com/uEkhyrp.png)
 
 # IMPORTANT ANNOUCEMENT:
